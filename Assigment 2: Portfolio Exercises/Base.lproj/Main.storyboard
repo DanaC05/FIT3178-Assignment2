@@ -55,12 +55,52 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Meals" id="vG6-L8-aeZ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wjJ-pZ-J8t"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wjJ-pZ-J8t">
+                            <connections>
+                                <segue destination="TEe-cg-RP7" kind="show" id="jZ1-fb-LK8"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2fD-ig-cXX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="877" y="88"/>
+        </scene>
+        <!--Search Meals-->
+        <scene sceneID="nxP-pv-Q1o">
+            <objects>
+                <tableViewController title="Search Meals" id="TEe-cg-RP7" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="r3n-17-RQn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mealCell" id="GpQ-c5-Wwi">
+                                <rect key="frame" x="20" y="55.5" width="374" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="GpQ-c5-Wwi" id="rBq-TL-rqC">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="mealInfoCell" id="wJl-pR-OQ7">
+                                <rect key="frame" x="20" y="99" width="374" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wJl-pR-OQ7" id="tcU-no-oBs">
+                                    <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="TEe-cg-RP7" id="07f-rq-0iF"/>
+                            <outlet property="delegate" destination="TEe-cg-RP7" id="Fef-2P-MPR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="ebP-er-LbI"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qwr-q0-95l" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1735" y="-334"/>
         </scene>
     </scenes>
 </document>
