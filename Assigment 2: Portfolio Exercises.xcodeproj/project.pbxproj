@@ -13,6 +13,9 @@
 		D9F7191A2633B022000D0C3E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9F719182633B022000D0C3E /* Main.storyboard */; };
 		D9F7191C2633B023000D0C3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9F7191B2633B023000D0C3E /* Assets.xcassets */; };
 		D9F7191F2633B023000D0C3E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9F7191D2633B023000D0C3E /* LaunchScreen.storyboard */; };
+		D9F719322633B410000D0C3E /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F719312633B410000D0C3E /* Meal.swift */; };
+		D9F719352633B486000D0C3E /* IngredientMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F719342633B486000D0C3E /* IngredientMeasurement.swift */; };
+		D9F719382633B4B8000D0C3E /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F719372633B4B8000D0C3E /* Ingredient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		D9F7191B2633B023000D0C3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9F7191E2633B023000D0C3E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9F719202633B023000D0C3E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9F719312633B410000D0C3E /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		D9F719342633B486000D0C3E /* IngredientMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientMeasurement.swift; sourceTree = "<group>"; };
+		D9F719372633B4B8000D0C3E /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				D9F7191B2633B023000D0C3E /* Assets.xcassets */,
 				D9F7191D2633B023000D0C3E /* LaunchScreen.storyboard */,
 				D9F719202633B023000D0C3E /* Info.plist */,
+				D9F719312633B410000D0C3E /* Meal.swift */,
+				D9F719342633B486000D0C3E /* IngredientMeasurement.swift */,
+				D9F719372633B4B8000D0C3E /* Ingredient.swift */,
 			);
 			path = "Assigment 2: Portfolio Exercises";
 			sourceTree = "<group>";
@@ -137,6 +146,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9F719322633B410000D0C3E /* Meal.swift in Sources */,
+				D9F719352633B486000D0C3E /* IngredientMeasurement.swift in Sources */,
+				D9F719382633B4B8000D0C3E /* Ingredient.swift in Sources */,
 				D9F719172633B022000D0C3E /* ViewController.swift in Sources */,
 				D9F719132633B022000D0C3E /* AppDelegate.swift in Sources */,
 				D9F719152633B022000D0C3E /* SceneDelegate.swift in Sources */,
