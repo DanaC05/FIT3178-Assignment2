@@ -1,5 +1,5 @@
 //
-//  IngredientMeasurement.swift
+//  Ingredient.swift
 //  Assigment 2: Portfolio Exercises
 //
 //  Created by Dana Casella on 24/4/21.
@@ -7,11 +7,11 @@
 
 import Foundation
 
-class IngredientMeasurement {
+class Ingredient: NSObject {
     var name: String
-    var quantity: String
+    var ingredientDescription: String?
     
-    init() {
-        // nothing yet
+    init(name: String) {
+        self.name = name
     }
 }
