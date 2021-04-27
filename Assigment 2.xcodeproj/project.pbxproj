@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D98599F02637B4840022E65C /* CreateEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98599EF2637B4840022E65C /* CreateEditTableViewController.swift */; };
 		D99633C92636A0470021BDCE /* MyMealsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99633C82636A0470021BDCE /* MyMealsTableViewController.swift */; };
 		D99633CD2636A5340021BDCE /* MealOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99633CC2636A5340021BDCE /* MealOverviewCell.swift */; };
 		D9F719132633B022000D0C3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F719122633B022000D0C3E /* AppDelegate.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D98599EF2637B4840022E65C /* CreateEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditTableViewController.swift; sourceTree = "<group>"; };
 		D99633C82636A0470021BDCE /* MyMealsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMealsTableViewController.swift; sourceTree = "<group>"; };
 		D99633CC2636A5340021BDCE /* MealOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealOverviewCell.swift; sourceTree = "<group>"; };
 		D9F7190F2633B022000D0C3E /* Assigment 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Assigment 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +88,7 @@
 				D9F719342633B486000D0C3E /* IngredientMeasurement.swift */,
 				D9F719372633B4B8000D0C3E /* Ingredient.swift */,
 				D99633C82636A0470021BDCE /* MyMealsTableViewController.swift */,
+				D98599EF2637B4840022E65C /* CreateEditTableViewController.swift */,
 			);
 			path = "Assigment 2";
 			sourceTree = "<group>";
@@ -164,6 +167,7 @@
 				D9F719352633B486000D0C3E /* IngredientMeasurement.swift in Sources */,
 				D9F719382633B4B8000D0C3E /* Ingredient.swift in Sources */,
 				D99633CD2636A5340021BDCE /* MealOverviewCell.swift in Sources */,
+				D98599F02637B4840022E65C /* CreateEditTableViewController.swift in Sources */,
 				D99633C92636A0470021BDCE /* MyMealsTableViewController.swift in Sources */,
 				D9F719172633B022000D0C3E /* ViewController.swift in Sources */,
 				D9F719132633B022000D0C3E /* AppDelegate.swift in Sources */,
