@@ -55,23 +55,25 @@ class MyMealsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == SECTION_MEALS {
             let mealCell = tableView.dequeueReusableCell(withIdentifier: CELL_MEAL, for: indexPath) as! MealOverviewCell
+            
+            let customMealCell = mealCell.createCell()!
             let meal = savedMeals[indexPath.row]
-            
-            
-            mealCell.mealName?.text = meal.name
-            mealCell.mealInstructions?.text = meal.instructions
-            mealCell.mealInstructions.textContainer.lineBreakMode = .byTruncatingTail
-            
+
+
+            customMealCell.mealName?.text = meal.name
+            customMealCell.mealInstructions?.text = meal.instructions
+            customMealCell.mealInstructions.textContainer.lineBreakMode = .byTruncatingTail
+
            // get image data - below code from https://stackoverflow.com/questions/39813497/swift-3-display-image-from-url
             let url = URL(string: meal.mealThumbnailLink ?? "")!
             let mealImageData = try? Data(contentsOf: url)
 
             // if image data found, load into image view
             if mealImageData != nil {
-                mealCell.mealThumbnail.image = UIImage(data: mealImageData!)
+                customMealCell.mealThumbnail.image = UIImage(data: mealImageData!)
             }
-            
-            return mealCell
+
+            return customMealCell
         }
         
         // if count section set relevent data
