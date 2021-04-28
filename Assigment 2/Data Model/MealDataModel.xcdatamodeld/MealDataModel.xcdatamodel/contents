@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Ingredient" representedClassName="Ingredient" syncable="YES" codeGenerationType="class">
+        <attribute name="ingredientDescription" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="Meal" representedClassName="Meal" syncable="YES">
         <attribute name="cuisine" optional="YES" attributeType="String"/>
         <attribute name="instructions" optional="YES" attributeType="String"/>
@@ -9,5 +13,6 @@
     </entity>
     <elements>
         <element name="Meal" positionX="-54.58203125" positionY="-188.83984375" width="128" height="118"/>
+        <element name="Ingredient" positionX="-36" positionY="-126" width="128" height="59"/>
     </elements>
 </model>
