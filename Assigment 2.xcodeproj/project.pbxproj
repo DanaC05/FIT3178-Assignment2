@@ -21,6 +21,9 @@
 		D9F719322633B410000D0C3E /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F719312633B410000D0C3E /* Meal.swift */; };
 		D9F719352633B486000D0C3E /* IngredientMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F719342633B486000D0C3E /* IngredientMeasurement.swift */; };
 		D9F719382633B4B8000D0C3E /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F719372633B4B8000D0C3E /* Ingredient.swift */; };
+		D9FFCBFD26392E9F000D0B85 /* EditNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FFCBFC26392E9F000D0B85 /* EditNameViewController.swift */; };
+		D9FFCC0026392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FFCBFF26392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift */; };
+		D9FFCC0426393139000D0B85 /* EditInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FFCC0326393139000D0B85 /* EditInstructionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +43,9 @@
 		D9F719312633B410000D0C3E /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		D9F719342633B486000D0C3E /* IngredientMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientMeasurement.swift; sourceTree = "<group>"; };
 		D9F719372633B4B8000D0C3E /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		D9FFCBFC26392E9F000D0B85 /* EditNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameViewController.swift; sourceTree = "<group>"; };
+		D9FFCBFF26392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController-YOURAUTHCATE.swift"; sourceTree = "<group>"; };
+		D9FFCC0326393139000D0B85 /* EditInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInstructionsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				D99633CB2636A4EA0021BDCE /* Custom Table Cell Views */,
+				D9FFCBFF26392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift */,
 				D9F719122633B022000D0C3E /* AppDelegate.swift */,
 				D9F719142633B022000D0C3E /* SceneDelegate.swift */,
 				D9F719162633B022000D0C3E /* ViewController.swift */,
@@ -95,6 +102,8 @@
 				D99633C82636A0470021BDCE /* MyMealsTableViewController.swift */,
 				D98599EF2637B4840022E65C /* CreateEditTableViewController.swift */,
 				D98599F22637B7410022E65C /* SearchMealsTableViewController.swift */,
+				D9FFCBFC26392E9F000D0B85 /* EditNameViewController.swift */,
+				D9FFCC0326393139000D0B85 /* EditInstructionsViewController.swift */,
 			);
 			path = "Assigment 2";
 			sourceTree = "<group>";
@@ -176,9 +185,12 @@
 				D99633CD2636A5340021BDCE /* MealOverviewCell.swift in Sources */,
 				D98599F02637B4840022E65C /* CreateEditTableViewController.swift in Sources */,
 				D99633C92636A0470021BDCE /* MyMealsTableViewController.swift in Sources */,
+				D9FFCC0426393139000D0B85 /* EditInstructionsViewController.swift in Sources */,
 				D98599F32637B7410022E65C /* SearchMealsTableViewController.swift in Sources */,
+				D9FFCBFD26392E9F000D0B85 /* EditNameViewController.swift in Sources */,
 				D9F719172633B022000D0C3E /* ViewController.swift in Sources */,
 				D9F719132633B022000D0C3E /* AppDelegate.swift in Sources */,
+				D9FFCC0026392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift in Sources */,
 				D9F719152633B022000D0C3E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

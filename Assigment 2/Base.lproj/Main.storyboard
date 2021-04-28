@@ -130,7 +130,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="Ecd-vE-J0N" kind="showDetail" id="qIa-jN-Mpe"/>
+                                    <segue destination="Ecd-vE-J0N" kind="show" id="qIa-jN-Mpe"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ingredientCell" textLabel="acL-SW-c9f" detailTextLabel="veq-aR-GcX" style="IBUITableViewCellStyleValue1" id="ioW-cV-6Rf">
@@ -236,36 +236,23 @@
             </objects>
             <point key="canvasLocation" x="2496" y="183"/>
         </scene>
-        <!--View Controller-->
+        <!--Edit Instructions-->
         <scene sceneID="aL3-wn-s9g">
             <objects>
-                <viewController id="Ecd-vE-J0N" sceneMemberID="viewController">
+                <viewController id="Ecd-vE-J0N" customClass="EditInstructionsViewController" customModule="Assigment_2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h5d-xM-XUH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Edit Meal Instructions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZj-Ef-lDQ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit Meal Instructions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZj-Ef-lDQ">
                                 <rect key="frame" x="86" y="20" width="243" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Meal Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="10P-cL-l34">
-                                <rect key="frame" x="20" y="83" width="374" height="24"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RUs-dl-WOh">
-                                <rect key="frame" x="50" y="718" width="314" height="37"/>
-                                <color key="backgroundColor" systemColor="linkColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Save">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wv-Gd-Bmh">
-                                <rect key="frame" x="50" y="143" width="314" height="545"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5wv-Gd-Bmh">
+                                <rect key="frame" x="20" y="108" width="374" height="754"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -276,21 +263,26 @@
                         <viewLayoutGuide key="safeArea" id="iuN-bF-QhE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="10P-cL-l34" firstAttribute="leading" secondItem="iuN-bF-QhE" secondAttribute="leading" constant="20" id="3Qf-T4-tmk"/>
-                            <constraint firstItem="10P-cL-l34" firstAttribute="top" secondItem="FZj-Ef-lDQ" secondAttribute="bottom" constant="35" id="6iw-rA-Dtf"/>
-                            <constraint firstItem="iuN-bF-QhE" firstAttribute="trailing" secondItem="10P-cL-l34" secondAttribute="trailing" constant="20" id="PGd-5V-MxC"/>
-                            <constraint firstItem="RUs-dl-WOh" firstAttribute="leading" secondItem="iuN-bF-QhE" secondAttribute="leading" constant="50" id="YPI-wH-nOS"/>
-                            <constraint firstItem="5wv-Gd-Bmh" firstAttribute="leading" secondItem="iuN-bF-QhE" secondAttribute="leading" constant="50" id="cq3-rx-0YZ"/>
-                            <constraint firstItem="iuN-bF-QhE" firstAttribute="bottom" secondItem="RUs-dl-WOh" secondAttribute="bottom" constant="50" id="jO3-AF-ydd"/>
-                            <constraint firstItem="iuN-bF-QhE" firstAttribute="trailing" secondItem="5wv-Gd-Bmh" secondAttribute="trailing" constant="50" id="jce-gE-umQ"/>
-                            <constraint firstItem="iuN-bF-QhE" firstAttribute="trailing" secondItem="RUs-dl-WOh" secondAttribute="trailing" constant="50" id="nWg-oM-aQj"/>
-                            <constraint firstItem="5wv-Gd-Bmh" firstAttribute="top" secondItem="10P-cL-l34" secondAttribute="bottom" constant="40" id="wf4-QI-si5"/>
+                            <constraint firstItem="5wv-Gd-Bmh" firstAttribute="bottom" secondItem="iuN-bF-QhE" secondAttribute="bottom" id="GeY-9J-rSp"/>
+                            <constraint firstItem="5wv-Gd-Bmh" firstAttribute="leading" secondItem="iuN-bF-QhE" secondAttribute="leading" constant="20" id="cq3-rx-0YZ"/>
+                            <constraint firstItem="5wv-Gd-Bmh" firstAttribute="top" secondItem="iuN-bF-QhE" secondAttribute="top" constant="20" id="hAh-79-ywb"/>
+                            <constraint firstItem="iuN-bF-QhE" firstAttribute="trailing" secondItem="5wv-Gd-Bmh" secondAttribute="trailing" constant="20" id="jce-gE-umQ"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Edit Instructions" id="vyM-qj-S64">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="vvM-tJ-w6d">
+                            <connections>
+                                <action selector="saveChanges:" destination="Ecd-vE-J0N" id="gik-Ew-5Uq"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="instructions" destination="5wv-Gd-Bmh" id="3KE-HR-ObS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ycf-l3-akE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2496" y="-489"/>
+            <point key="canvasLocation" x="2494.202898550725" y="-489.50892857142856"/>
         </scene>
         <!--Search Meals-->
         <scene sceneID="nxP-pv-Q1o">
@@ -343,7 +335,7 @@
         <!--Edit Title-->
         <scene sceneID="bnT-id-ZqX">
             <objects>
-                <viewController title="Edit Title" id="lao-u5-UQY" sceneMemberID="viewController">
+                <viewController title="Edit Title" id="lao-u5-UQY" customClass="EditNameViewController" customModule="Assigment_2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xdz-BM-8Ov">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -372,8 +364,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Edit Name" id="vMV-94-OS6">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="iv8-tj-lJb"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="iv8-tj-lJb">
+                            <connections>
+                                <action selector="saveChanges:" destination="lao-u5-UQY" id="efz-Dj-jB9"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mealName" destination="Q59-Qn-h3s" id="6Fo-6y-TxK"/>
+                        <outlet property="mealThumbnail" destination="Gl6-Vv-kj5" id="Avp-Bu-2lc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iFL-JG-XRF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -425,9 +425,6 @@
     <resources>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
