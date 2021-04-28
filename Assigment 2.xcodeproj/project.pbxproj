@@ -25,6 +25,7 @@
 		D9FFCC0026392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FFCBFF26392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift */; };
 		D9FFCC0426393139000D0B85 /* EditInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FFCC0326393139000D0B85 /* EditInstructionsViewController.swift */; };
 		D9FFCC07263938BB000D0B85 /* IngredientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FFCC06263938BB000D0B85 /* IngredientsTableViewController.swift */; };
+		D9FFCC0D26393A51000D0B85 /* MealDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D9FFCC0B26393A51000D0B85 /* MealDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		D9FFCBFF26392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController-YOURAUTHCATE.swift"; sourceTree = "<group>"; };
 		D9FFCC0326393139000D0B85 /* EditInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInstructionsViewController.swift; sourceTree = "<group>"; };
 		D9FFCC06263938BB000D0B85 /* IngredientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewController.swift; sourceTree = "<group>"; };
+		D9FFCC0C26393A51000D0B85 /* MealDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MealDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,8 @@
 		D9F719112633B022000D0C3E /* Assigment 2 */ = {
 			isa = PBXGroup;
 			children = (
+				D9FFCC0926393A0F000D0B85 /* Database */,
+				D9FFCC0A26393A17000D0B85 /* Data Model */,
 				D99633CB2636A4EA0021BDCE /* Custom Table Cell Views */,
 				D9FFCBFF26392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift */,
 				D9F719122633B022000D0C3E /* AppDelegate.swift */,
@@ -109,6 +113,21 @@
 				D9FFCC06263938BB000D0B85 /* IngredientsTableViewController.swift */,
 			);
 			path = "Assigment 2";
+			sourceTree = "<group>";
+		};
+		D9FFCC0926393A0F000D0B85 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		D9FFCC0A26393A17000D0B85 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				D9FFCC0B26393A51000D0B85 /* MealDataModel.xcdatamodeld */,
+			);
+			path = "Data Model";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +215,7 @@
 				D9F719132633B022000D0C3E /* AppDelegate.swift in Sources */,
 				D9FFCC0026392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift in Sources */,
 				D9F719152633B022000D0C3E /* SceneDelegate.swift in Sources */,
+				D9FFCC0D26393A51000D0B85 /* MealDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,6 +417,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D9FFCC0B26393A51000D0B85 /* MealDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D9FFCC0C26393A51000D0B85 /* MealDataModel.xcdatamodel */,
+			);
+			currentVersion = D9FFCC0C26393A51000D0B85 /* MealDataModel.xcdatamodel */;
+			path = MealDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D9F719072633B022000D0C3E /* Project object */;
 }
