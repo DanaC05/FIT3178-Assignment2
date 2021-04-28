@@ -117,6 +117,12 @@ class MyMealsTableViewController: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == SECTION_MEALS {
+            performSegue(withIdentifier: "createEditSegue", sender: self)
+        }
+    }
+    
 
     /*
     // Override to support rearranging the table view.

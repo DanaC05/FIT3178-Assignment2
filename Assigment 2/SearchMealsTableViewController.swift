@@ -19,11 +19,17 @@ class SearchMealsTableViewController: UITableViewController, UISearchBarDelegate
         addDefaultMeals()
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // create search controller
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        
+        // attach to the navigation item
+        navigationItem.searchController = searchController
+        
+        // ensure the search bar is always visible
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
     
     func addDefaultMeals() -> Void {
@@ -43,9 +49,6 @@ class SearchMealsTableViewController: UITableViewController, UISearchBarDelegate
         case SECTION_MEAL:
             return searchResults.count
         case SECTION_INFO:
-            if searchResults.count > 0 {
-                return 0
-            }
             return 1
         default:
             return 0
