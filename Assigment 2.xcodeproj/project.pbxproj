@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D98599F02637B4840022E65C /* CreateEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98599EF2637B4840022E65C /* CreateEditTableViewController.swift */; };
+		D98599F32637B7410022E65C /* SearchMealsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D98599F22637B7410022E65C /* SearchMealsTableViewController.swift */; };
+		D98599FA2637C00B0022E65C /* MealOverviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D98599F92637C00B0022E65C /* MealOverviewCell.xib */; };
+		D99633C92636A0470021BDCE /* MyMealsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99633C82636A0470021BDCE /* MyMealsTableViewController.swift */; };
+		D99633CD2636A5340021BDCE /* MealOverviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99633CC2636A5340021BDCE /* MealOverviewCell.swift */; };
 		D9F719132633B022000D0C3E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F719122633B022000D0C3E /* AppDelegate.swift */; };
 		D9F719152633B022000D0C3E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F719142633B022000D0C3E /* SceneDelegate.swift */; };
 		D9F719172633B022000D0C3E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F719162633B022000D0C3E /* ViewController.swift */; };
@@ -16,10 +21,19 @@
 		D9F719322633B410000D0C3E /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F719312633B410000D0C3E /* Meal.swift */; };
 		D9F719352633B486000D0C3E /* IngredientMeasurement.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F719342633B486000D0C3E /* IngredientMeasurement.swift */; };
 		D9F719382633B4B8000D0C3E /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F719372633B4B8000D0C3E /* Ingredient.swift */; };
+		D9FFCBFD26392E9F000D0B85 /* EditNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FFCBFC26392E9F000D0B85 /* EditNameViewController.swift */; };
+		D9FFCC0026392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FFCBFF26392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift */; };
+		D9FFCC0426393139000D0B85 /* EditInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FFCC0326393139000D0B85 /* EditInstructionsViewController.swift */; };
+		D9FFCC07263938BB000D0B85 /* IngredientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FFCC06263938BB000D0B85 /* IngredientsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D9F7190F2633B022000D0C3E /* Assigment 2: Portfolio Exercises.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Assigment 2: Portfolio Exercises.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D98599EF2637B4840022E65C /* CreateEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEditTableViewController.swift; sourceTree = "<group>"; };
+		D98599F22637B7410022E65C /* SearchMealsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMealsTableViewController.swift; sourceTree = "<group>"; };
+		D98599F92637C00B0022E65C /* MealOverviewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MealOverviewCell.xib; sourceTree = "<group>"; };
+		D99633C82636A0470021BDCE /* MyMealsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyMealsTableViewController.swift; sourceTree = "<group>"; };
+		D99633CC2636A5340021BDCE /* MealOverviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealOverviewCell.swift; sourceTree = "<group>"; };
+		D9F7190F2633B022000D0C3E /* Assigment 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Assigment 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F719122633B022000D0C3E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9F719142633B022000D0C3E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D9F719162633B022000D0C3E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +44,10 @@
 		D9F719312633B410000D0C3E /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		D9F719342633B486000D0C3E /* IngredientMeasurement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientMeasurement.swift; sourceTree = "<group>"; };
 		D9F719372633B4B8000D0C3E /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
+		D9FFCBFC26392E9F000D0B85 /* EditNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameViewController.swift; sourceTree = "<group>"; };
+		D9FFCBFF26392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController-YOURAUTHCATE.swift"; sourceTree = "<group>"; };
+		D9FFCC0326393139000D0B85 /* EditInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInstructionsViewController.swift; sourceTree = "<group>"; };
+		D9FFCC06263938BB000D0B85 /* IngredientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,10 +61,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D99633CB2636A4EA0021BDCE /* Custom Table Cell Views */ = {
+			isa = PBXGroup;
+			children = (
+				D99633CC2636A5340021BDCE /* MealOverviewCell.swift */,
+				D98599F92637C00B0022E65C /* MealOverviewCell.xib */,
+			);
+			path = "Custom Table Cell Views";
+			sourceTree = "<group>";
+		};
 		D9F719062633B022000D0C3E = {
 			isa = PBXGroup;
 			children = (
-				D9F719112633B022000D0C3E /* Assigment 2: Portfolio Exercises */,
+				D9F719112633B022000D0C3E /* Assigment 2 */,
 				D9F719102633B022000D0C3E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,14 +81,16 @@
 		D9F719102633B022000D0C3E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D9F7190F2633B022000D0C3E /* Assigment 2: Portfolio Exercises.app */,
+				D9F7190F2633B022000D0C3E /* Assigment 2.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D9F719112633B022000D0C3E /* Assigment 2: Portfolio Exercises */ = {
+		D9F719112633B022000D0C3E /* Assigment 2 */ = {
 			isa = PBXGroup;
 			children = (
+				D99633CB2636A4EA0021BDCE /* Custom Table Cell Views */,
+				D9FFCBFF26392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift */,
 				D9F719122633B022000D0C3E /* AppDelegate.swift */,
 				D9F719142633B022000D0C3E /* SceneDelegate.swift */,
 				D9F719162633B022000D0C3E /* ViewController.swift */,
@@ -72,16 +101,22 @@
 				D9F719312633B410000D0C3E /* Meal.swift */,
 				D9F719342633B486000D0C3E /* IngredientMeasurement.swift */,
 				D9F719372633B4B8000D0C3E /* Ingredient.swift */,
+				D99633C82636A0470021BDCE /* MyMealsTableViewController.swift */,
+				D98599EF2637B4840022E65C /* CreateEditTableViewController.swift */,
+				D98599F22637B7410022E65C /* SearchMealsTableViewController.swift */,
+				D9FFCBFC26392E9F000D0B85 /* EditNameViewController.swift */,
+				D9FFCC0326393139000D0B85 /* EditInstructionsViewController.swift */,
+				D9FFCC06263938BB000D0B85 /* IngredientsTableViewController.swift */,
 			);
-			path = "Assigment 2: Portfolio Exercises";
+			path = "Assigment 2";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D9F7190E2633B022000D0C3E /* Assigment 2: Portfolio Exercises */ = {
+		D9F7190E2633B022000D0C3E /* Assigment 2 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D9F719232633B023000D0C3E /* Build configuration list for PBXNativeTarget "Assigment 2: Portfolio Exercises" */;
+			buildConfigurationList = D9F719232633B023000D0C3E /* Build configuration list for PBXNativeTarget "Assigment 2" */;
 			buildPhases = (
 				D9F7190B2633B022000D0C3E /* Sources */,
 				D9F7190C2633B022000D0C3E /* Frameworks */,
@@ -91,9 +126,9 @@
 			);
 			dependencies = (
 			);
-			name = "Assigment 2: Portfolio Exercises";
+			name = "Assigment 2";
 			productName = "Assigment 2: Portfolio Exercises";
-			productReference = D9F7190F2633B022000D0C3E /* Assigment 2: Portfolio Exercises.app */;
+			productReference = D9F7190F2633B022000D0C3E /* Assigment 2.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -110,7 +145,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D9F7190A2633B022000D0C3E /* Build configuration list for PBXProject "Assigment 2: Portfolio Exercises" */;
+			buildConfigurationList = D9F7190A2633B022000D0C3E /* Build configuration list for PBXProject "Assigment 2" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -123,7 +158,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D9F7190E2633B022000D0C3E /* Assigment 2: Portfolio Exercises */,
+				D9F7190E2633B022000D0C3E /* Assigment 2 */,
 			);
 		};
 /* End PBXProject section */
@@ -136,6 +171,7 @@
 				D9F7191F2633B023000D0C3E /* LaunchScreen.storyboard in Resources */,
 				D9F7191C2633B023000D0C3E /* Assets.xcassets in Resources */,
 				D9F7191A2633B022000D0C3E /* Main.storyboard in Resources */,
+				D98599FA2637C00B0022E65C /* MealOverviewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,8 +185,16 @@
 				D9F719322633B410000D0C3E /* Meal.swift in Sources */,
 				D9F719352633B486000D0C3E /* IngredientMeasurement.swift in Sources */,
 				D9F719382633B4B8000D0C3E /* Ingredient.swift in Sources */,
+				D99633CD2636A5340021BDCE /* MealOverviewCell.swift in Sources */,
+				D98599F02637B4840022E65C /* CreateEditTableViewController.swift in Sources */,
+				D99633C92636A0470021BDCE /* MyMealsTableViewController.swift in Sources */,
+				D9FFCC0426393139000D0B85 /* EditInstructionsViewController.swift in Sources */,
+				D98599F32637B7410022E65C /* SearchMealsTableViewController.swift in Sources */,
+				D9FFCC07263938BB000D0B85 /* IngredientsTableViewController.swift in Sources */,
+				D9FFCBFD26392E9F000D0B85 /* EditNameViewController.swift in Sources */,
 				D9F719172633B022000D0C3E /* ViewController.swift in Sources */,
 				D9F719132633B022000D0C3E /* AppDelegate.swift in Sources */,
+				D9FFCC0026392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift in Sources */,
 				D9F719152633B022000D0C3E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,7 +344,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L7J675Y739;
-				INFOPLIST_FILE = "Assigment 2: Portfolio Exercises/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Assigment 2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -319,7 +363,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L7J675Y739;
-				INFOPLIST_FILE = "Assigment 2: Portfolio Exercises/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Assigment 2/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -334,7 +378,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D9F7190A2633B022000D0C3E /* Build configuration list for PBXProject "Assigment 2: Portfolio Exercises" */ = {
+		D9F7190A2633B022000D0C3E /* Build configuration list for PBXProject "Assigment 2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D9F719212633B023000D0C3E /* Debug */,
@@ -343,7 +387,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D9F719232633B023000D0C3E /* Build configuration list for PBXNativeTarget "Assigment 2: Portfolio Exercises" */ = {
+		D9F719232633B023000D0C3E /* Build configuration list for PBXNativeTarget "Assigment 2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D9F719242633B023000D0C3E /* Debug */,

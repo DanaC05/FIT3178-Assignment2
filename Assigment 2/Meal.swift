@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Meal {
+class Meal: NSObject {
     var name: String
     var mealCategory: String?
     var cuisine: String?
@@ -15,7 +15,9 @@ class Meal {
     var mealThumbnailLink: String?
     var ingredients = [IngredientMeasurement]()
     
-    init() {
-        // nothing yet
+    init(name: String, instructions: String, mealThumbnailLink: String) {
+        self.name = name
+        self.instructions = instructions
+        self.mealThumbnailLink = mealThumbnailLink
     }
 }
