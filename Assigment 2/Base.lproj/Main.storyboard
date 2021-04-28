@@ -201,7 +201,7 @@
         <!--Add Ingrdient-->
         <scene sceneID="L2U-sq-4SJ">
             <objects>
-                <viewController title="Add Ingrdient" id="OyX-ao-Upd" sceneMemberID="viewController">
+                <viewController title="Add Ingrdient" id="OyX-ao-Upd" customClass="IngredientsTableViewController" customModule="Assigment_2" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uJZ-JJ-fXh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

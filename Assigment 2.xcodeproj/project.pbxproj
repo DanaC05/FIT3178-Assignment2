@@ -24,6 +24,7 @@
 		D9FFCBFD26392E9F000D0B85 /* EditNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FFCBFC26392E9F000D0B85 /* EditNameViewController.swift */; };
 		D9FFCC0026392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FFCBFF26392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift */; };
 		D9FFCC0426393139000D0B85 /* EditInstructionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FFCC0326393139000D0B85 /* EditInstructionsViewController.swift */; };
+		D9FFCC07263938BB000D0B85 /* IngredientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FFCC06263938BB000D0B85 /* IngredientsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		D9FFCBFC26392E9F000D0B85 /* EditNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameViewController.swift; sourceTree = "<group>"; };
 		D9FFCBFF26392F77000D0B85 /* UIViewController-YOURAUTHCATE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController-YOURAUTHCATE.swift"; sourceTree = "<group>"; };
 		D9FFCC0326393139000D0B85 /* EditInstructionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditInstructionsViewController.swift; sourceTree = "<group>"; };
+		D9FFCC06263938BB000D0B85 /* IngredientsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				D98599F22637B7410022E65C /* SearchMealsTableViewController.swift */,
 				D9FFCBFC26392E9F000D0B85 /* EditNameViewController.swift */,
 				D9FFCC0326393139000D0B85 /* EditInstructionsViewController.swift */,
+				D9FFCC06263938BB000D0B85 /* IngredientsTableViewController.swift */,
 			);
 			path = "Assigment 2";
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				D99633C92636A0470021BDCE /* MyMealsTableViewController.swift in Sources */,
 				D9FFCC0426393139000D0B85 /* EditInstructionsViewController.swift in Sources */,
 				D98599F32637B7410022E65C /* SearchMealsTableViewController.swift in Sources */,
+				D9FFCC07263938BB000D0B85 /* IngredientsTableViewController.swift in Sources */,
 				D9FFCBFD26392E9F000D0B85 /* EditNameViewController.swift in Sources */,
 				D9F719172633B022000D0C3E /* ViewController.swift in Sources */,
 				D9F719132633B022000D0C3E /* AppDelegate.swift in Sources */,
