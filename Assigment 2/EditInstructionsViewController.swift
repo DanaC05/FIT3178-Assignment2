@@ -9,12 +9,19 @@ import UIKit
 
 class EditInstructionsViewController: UIViewController {
 
+    var childMeal: Meal?
     @IBOutlet weak var instructions: UITextView!
     @IBAction func saveChanges(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        if instructions.text != "" {
+            childMeal?.instructions = instructions.text
+            navigationController?.popViewController(animated: true)
+            return
+        }
+        displayMessage(title: "No Instructions Enetered", message: "Please enter the instructions for making \(childMeal?.name ?? "your meal")", action: nil)
     }
     
     override func viewDidLoad() {
+        instructions.text = childMeal?.instructions
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

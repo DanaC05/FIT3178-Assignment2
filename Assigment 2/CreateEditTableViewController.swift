@@ -6,29 +6,85 @@
 //
 
 import UIKit
+import CoreData
 
-class CreateEditTableViewController: UITableViewController {
+class CreateEditTableViewController: UITableViewController, DatabaseListener {
     
-    @IBOutlet weak var mealThumbnail: UIImageView!
-    let SECTION_NAME = 0
-    let SECTION_INSTRUCTIONS = 1
-    let SECTION_INGREDIENTS = 2
-    let SECTION_ADD = 3
+    
+
+    let SECTION_NAME = 1
+    let SECTION_INSTRUCTIONS = 2
+    let SECTION_INGREDIENTS = 3
+    let SECTION_ADD = 4
     let CELL_NAME = "mealTitleCell"
     let CELL_INSTRUCTIONS = "instructionsCell"
     let CELL_INGREDIENT = "ingredientCell"
     let CELL_ADD = "addIngredientCell"
-    var ingredients: [IngredientMeasurement] = []
+    var ingredientsList: [IngredientMeasurement] = []
     var meal: Meal?
-    var newMeal: Bool = true
-    var completeForm: Bool = false
+    var childMeal: Meal?
+    var newMeal: Bool = false
+    weak var databaseController: DatabaseProtocol?
     @IBAction func saveMeal(_ sender: Any) {
         // nothing yet - will check if new meal and whether all is filled out
+        var messageTitle: String
+        var messageBody: String
+        if completeForm() {
+            var displayMessageAction: UIAlertAction
+            
+            // save child meal to child context and then to core data
+            databaseController?.tidyUp()
+            databaseController?.cleanUp()
+
+            // check if meal was successfully added to library
+            if let mealAdded = databaseController?.addMealToMealLibrary(meal: meal!, mealLibrary: databaseController!.myMealLibrary), mealAdded || !newMeal {
+                messageTitle = "Meal Saved"
+                messageBody = "\((meal?.name)!) was successfully saved to your library!"
+                displayMessageAction = UIAlertAction(title: "Dismiss", style: .default, handler: {_ in
+                self.navigationController?.popToRootViewController(animated: true)
+                })
+            } else {
+                messageTitle = "Duplicate Meal"
+                messageBody = "\((meal?.name)!) is already in your library!"
+                displayMessageAction = UIAlertAction(title: "Dismiss", style: .default, handler: {_ in
+                self.navigationController?.popViewController(animated: true)
+                })
+            }
+             
+            displayMessage(title: messageTitle, message: messageBody, action: displayMessageAction)
+        } else {
+            messageTitle = "Incomplete Meal"
+            messageBody = "Be sure to complete all fields:\n"
+            
+            if childMeal!.name == nil {
+                messageBody += "  - Must provide a name\n"
+            }
+            if childMeal?.instructions == nil {
+                messageBody += "  - Must provide instructions\n"
+            }
+            if ingredientsList.isEmpty {
+                messageBody += "  - Must provide at least one ingredient"
+            }
+            
+            displayMessage(title: messageTitle, message: messageBody, action: nil)
+        }
     }
     
 
     override func viewDidLoad() {
-        setDefaultMeal()
+        // get reference to database from app delegate
+        let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
+        databaseController = appDelegate?.databaseController
+        
+        // create child meal
+        childMeal = databaseController?.passMeal(meal: meal)
+        
+        // set navigation title depending on intent (edit or add) and add thumbnail
+        // convert meal ingredients to an array
+        if childMeal?.name != nil {
+            navigationItem.title = "Edit Meal"
+            ingredientsList = (childMeal?.ingredients?.allObjects as? [IngredientMeasurement])!
+        }
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -38,27 +94,31 @@ class CreateEditTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    func setDefaultMeal() {
-        meal = Meal(name: "Breakfast Potatoes", instructions: "Before you do anything, freeze your bacon slices so when you're ready to prep, it'll be so much easier to chop! Wash the potatoes and cut into square pieces. To prevent any browning, place the already cut potatoes in a bowl filled with water. In the meantime, heat the olive oil in a large skillet over medium-high heat. Tilt the skillet so the oil spreads evenly. Once the oil is hot, drain the potatoes and add to the skillet. Season with  salt (to taste),  pepper (to taste , and  Old Bay Seasoning (to taste)  as needed. Cook for 10 minutes, stirring the potatoes often until brown. Chop up the bacon and add to the potatoes. The bacon will start to render and the fat will begin to further cook the potatoes. Toss it up a bit! Once the bacon is cooked, add the garlic  and toss. Season once more. Control heat as needed. Let the garlic cook until fragrant, about one minute and add fresh parsley (to taste). Just before serving, drizzle maple syrup  over the potatoes and toss. Let that cook another minute, giving the potatoes a chance to caramelize.", mealThumbnailLink: "https://d2wtgwi3o396m5.cloudfront.net/recipe/b2633ed8-3706-4c75-b321-c6702ff258a1.jpg")
-        ingredients.append(IngredientMeasurement(name: "Yukon Gold Potato", quantity: "3"))
-        ingredients.append(IngredientMeasurement(name: "Bacon", quantity: "2 Rashes"))
-        ingredients.append(IngredientMeasurement(name: "(optional) Egg, Fried", quantity: "1"))
-        
-        // get image data - below code from https://stackoverflow.com/questions/39813497/swift-3-display-image-from-url
-         let url = URL(string: meal!.mealThumbnailLink ?? "")!
-         let mealImageData = try? Data(contentsOf: url)
-
-         // if image data found, load into image view
-         if mealImageData != nil {
-            mealThumbnail.image = UIImage(data: mealImageData!)
-         }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+        tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+    }
+    
+    func onLibraryChange(storedMeals: [Meal]) {
+        // no action required as the stored meals cannot be changed in this view
+    }
+    
+    func completeForm() -> Bool {
+        // check if required attributes have been set
+        return childMeal?.name != nil && childMeal?.instructions != nil && ingredientsList.count > 0 ? true : false
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 4
+        return 5
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,7 +130,7 @@ class CreateEditTableViewController: UITableViewController {
         case SECTION_ADD:
             return 1
         case SECTION_INGREDIENTS:
-            return ingredients.count
+            return ingredientsList.count
         default:
             return 0
         }
@@ -94,26 +154,20 @@ class CreateEditTableViewController: UITableViewController {
         switch indexPath.section {
         case SECTION_NAME:
             let titleCell = tableView.dequeueReusableCell(withIdentifier: CELL_NAME, for: indexPath)
-            if meal != nil {
-                titleCell.textLabel?.text = meal!.name
-            } else {
-                titleCell.textLabel?.textColor = UIColor .systemGray
-            }
+            titleCell.textLabel?.text = childMeal?.name
+            
             return titleCell
         case SECTION_INSTRUCTIONS:
             let instructionsCell = tableView.dequeueReusableCell(withIdentifier: CELL_INSTRUCTIONS, for: indexPath)
-            if meal != nil {
-                instructionsCell.textLabel?.text = meal!.instructions
-            } else {
-                instructionsCell.textLabel?.textColor = UIColor .systemGray
-            }
+            instructionsCell.textLabel?.text = childMeal?.instructions
+            
             return instructionsCell
         case SECTION_INGREDIENTS:
             let ingredientCell = tableView.dequeueReusableCell(withIdentifier: CELL_INGREDIENT, for: indexPath)
-            let ingredient = ingredients[indexPath.row]
-            
+            let ingredient = ingredientsList[indexPath.row]
             ingredientCell.textLabel?.text = ingredient.name
             ingredientCell.detailTextLabel?.text = ingredient.quantity
+            
             return ingredientCell
         default:
             let addCell = tableView.dequeueReusableCell(withIdentifier: CELL_ADD, for: indexPath)
@@ -121,32 +175,38 @@ class CreateEditTableViewController: UITableViewController {
         }
     }
     
-
-    // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return indexPath.section == SECTION_ADD ? false : true
+        return indexPath.section == SECTION_INGREDIENTS ? true : false
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete && indexPath.section == SECTION_INGREDIENTS {
+            databaseController?.removeIngredientFromMeal(ingredient: ingredientsList[indexPath.row], meal: childMeal!)
+            
+            ingredientsList = (childMeal?.ingredients?.allObjects as? [IngredientMeasurement])!
+            tableView.reloadData()
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "editNameSegue":
+            let destination = segue.destination as! EditNameViewController
+            destination.childMeal = childMeal
+        case "editInstructionsSegue":
+            let destination = segue.destination as! EditInstructionsViewController
+            destination.childMeal = childMeal
+        default:
+            // no data is needed to be passed to destination for adding ingredients
+            return
+        }
+    }
+    
 
 
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete && indexPath.section == SECTION_INGREDIENTS {
-            // Delete the row from the data source
-            tableView.performBatchUpdates({
-                // remove hero from current party
-                self.ingredients.remove(at: indexPath.row)
-                
-                // delete row
-                self.tableView.deleteRows(at: [indexPath], with: .fade)
-                
-                // update sections
-                self.tableView.reloadSections([SECTION_NAME, SECTION_INSTRUCTIONS, SECTION_ADD], with: .automatic)
-            }, completion: nil)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
+   
 
     /*
     // Override to support rearranging the table view.

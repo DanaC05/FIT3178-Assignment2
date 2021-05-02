@@ -10,19 +10,25 @@ import UIKit
 class EditNameViewController: UIViewController {
     
     @IBOutlet weak var mealName: UITextField!
-    @IBOutlet weak var mealThumbnail: UIImageView!
-    var meal: Meal?
+    var childMeal: Meal?
+    var databaseController: DatabaseProtocol?
     @IBAction func saveChanges(_ sender: Any) {
         if mealName.text != "" {
-            meal?.name = mealName.text!
+            childMeal?.name = mealName.text
+            databaseController?.tidyUp()
             navigationController?.popViewController(animated: true)
             return
         }
         
-        displayMessage(title: "No Name Enetered", message: "Please enter the name of the meal")
+        displayMessage(title: "No Name Enetered", message: "Please enter the name of the meal", action: nil)
     }
     
     override func viewDidLoad() {
+        // get reference to database from app delegate
+        let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
+        databaseController = appDelegate?.databaseController
+        
+        mealName.text = childMeal?.name
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.

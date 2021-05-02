@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class SearchMealsTableViewController: UITableViewController, UISearchBarDelegate {
     
@@ -13,12 +14,18 @@ class SearchMealsTableViewController: UITableViewController, UISearchBarDelegate
     let SECTION_MEAL = 0
     let CELL_INFO = "mealInfoCell"
     let SECTION_INFO = 1
-    var searchResults: [Meal] = []
+    var searchResults: [MealData] = []
+    var selectedMeal: Meal?
+    var indicator = UIActivityIndicatorView()
+    weak var databaseController: DatabaseProtocol?
     
     override func viewDidLoad() {
-        addDefaultMeals()
         super.viewDidLoad()
-
+        
+        // get reference to database from app delegate
+        let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
+        databaseController = appDelegate?.databaseController
+        
         // create search controller
         let searchController = UISearchController(searchResultsController: nil)
         searchController.searchBar.delegate = self
@@ -30,11 +37,87 @@ class SearchMealsTableViewController: UITableViewController, UISearchBarDelegate
         
         // ensure the search bar is always visible
         navigationItem.hidesSearchBarWhenScrolling = false
+        
+        // add loading indicator view
+        indicator.style = UIActivityIndicatorView.Style.large
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(indicator)
+        
+        NSLayoutConstraint.activate([
+            indicator.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            indicator.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)
+        ])
     }
     
-    func addDefaultMeals() -> Void {
-        searchResults.append(Meal(name: "Breakfast Potatoes", instructions: "Before you do anything, freeze your bacon slices so when you're ready to prep, it'll be so much easier to chop! Wash the potatoes and cut into square pieces. To prevent any browning, place the already cut potatoes in a bowl filled with water. In the meantime, heat the olive oil in a large skillet over medium-high heat. Tilt the skillet so the oil spreads evenly. Once the oil is hot, drain the potatoes and add to the skillet. Season with  salt (to taste),  pepper (to taste , and  Old Bay Seasoning (to taste)  as needed. Cook for 10 minutes, stirring the potatoes often until brown. Chop up the bacon and add to the potatoes. The bacon will start to render and the fat will begin to further cook the potatoes. Toss it up a bit! Once the bacon is cooked, add the garlic  and toss. Season once more. Control heat as needed. Let the garlic cook until fragrant, about one minute and add fresh parsley (to taste). Just before serving, drizzle maple syrup  over the potatoes and toss. Let that cook another minute, giving the potatoes a chance to caramelize.", mealThumbnailLink: "https://d2wtgwi3o396m5.cloudfront.net/recipe/b2633ed8-3706-4c75-b321-c6702ff258a1.jpg"))
+    func requestMealsNamed(_ mealName: String) {
+        // create URL for api request
+        var searchComponents = URLComponents()
+        searchComponents.scheme = "https"
+        searchComponents.host = "www.themealdb.com"
+        searchComponents.path = "/api/json/v1/1/search.php"
+        searchComponents.queryItems = [URLQueryItem(name: "s", value: mealName)]
+        
+        // check validity of url
+        guard let requestURL = searchComponents.url else {
+            print("Error: Invalid URL")
+            return
+        }
+        
+        // create task data
+        let task = URLSession.shared.dataTask(with: requestURL) {
+            (data, response, error) in
+            
+            // check for any errors
+            if let error = error {
+                print(error)
+                return
+            }
+            
+            // collect data
+            do {
+                // create a JSONDecoder instance to make use of the codable object
+                let decoder = JSONDecoder()
+                let allMealData = try decoder.decode(MealDataArray.self, from: data!)
+                
+                // if request is sucessfull, mealData was decoded is not empty
+                if let meals = allMealData.meals {
+                    self.searchResults.append(contentsOf: meals)
+                }
+                
+                // stop loading animation (as data will have loaded)
+                DispatchQueue.main.async {
+                    self.indicator.stopAnimating()
+                }
+                
+                // reload table data
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+                
+            } catch let err {
+                print(err)
+            }
+        }
+        
+        // execute data task
+        task.resume()
     }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        // clear meals and reload data
+        searchResults.removeAll()
+        tableView.reloadData()
+        
+        // guard against search bar being empty (no input)
+        guard let searchText = searchBar.text?.lowercased() else {
+            return
+        }
+        
+        // call request function and show loading animation
+        indicator.startAnimating()
+        requestMealsNamed(searchText)
+    }
+    
 
     // MARK: - Table view data source
 
@@ -57,26 +140,15 @@ class SearchMealsTableViewController: UITableViewController, UISearchBarDelegate
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == SECTION_MEAL {
-            let mealCell = tableView.dequeueReusableCell(withIdentifier: CELL_MEAL, for: indexPath) as! MealOverviewCell
-            let customMealCell = mealCell.createCell()!
-            
+        if (indexPath.section == SECTION_MEAL) {
+            let mealCell = tableView.dequeueReusableCell(withIdentifier: CELL_MEAL, for: indexPath)
             let meal = searchResults[indexPath.row]
             
             // setup cell
-            customMealCell.mealName.text = meal.name
-            customMealCell.mealInstructions.text = meal.instructions
+            mealCell.textLabel?.text = meal.name
+            mealCell.detailTextLabel?.text = meal.instructions
             
-            // get image data - below code from https://stackoverflow.com/questions/39813497/swift-3-display-image-from-url
-             let url = URL(string: meal.mealThumbnailLink ?? "")!
-             let mealImageData = try? Data(contentsOf: url)
-
-             // if image data found, load into image view
-             if mealImageData != nil {
-                customMealCell.mealThumbnail.image = UIImage(data: mealImageData!)
-             }
-             
-             return customMealCell
+            return mealCell
         }
         
         let infoCell = tableView.dequeueReusableCell(withIdentifier: CELL_INFO, for: indexPath)
@@ -85,6 +157,18 @@ class SearchMealsTableViewController: UITableViewController, UISearchBarDelegate
         return infoCell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.section == SECTION_MEAL) {
+            selectedMeal = databaseController!.addMeal(mealData: searchResults[indexPath.row])
+        }
+        performSegue(withIdentifier: "editNewMealSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! CreateEditTableViewController
+        destination.meal = selectedMeal
+    }
+
 
     /*
     // Override to support conditional editing of the table view.

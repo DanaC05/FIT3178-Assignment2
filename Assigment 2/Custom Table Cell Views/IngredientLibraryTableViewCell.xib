@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ingredientCell" id="NxB-Vn-UR2" customClass="IngredientLibraryTableViewCell" customModule="Assigment_2" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NxB-Vn-UR2" id="CL6-km-K5p">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="79O-FD-o10">
+                        <rect key="frame" x="369" y="10" width="25" height="24.5"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ingredient Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="suO-K3-EdW">
+                        <rect key="frame" x="20" y="11.5" width="329" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="79O-FD-o10" firstAttribute="top" secondItem="CL6-km-K5p" secondAttribute="top" constant="9.75" id="3e8-zu-2XV"/>
+                    <constraint firstItem="suO-K3-EdW" firstAttribute="top" secondItem="CL6-km-K5p" secondAttribute="top" constant="11.5" id="BBD-u6-4nB"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="suO-K3-EdW" secondAttribute="bottom" constant="0.5" id="Vk9-Iu-fhS"/>
+                    <constraint firstItem="79O-FD-o10" firstAttribute="leading" secondItem="suO-K3-EdW" secondAttribute="trailing" constant="20" id="WUg-kr-dqx"/>
+                    <constraint firstAttribute="bottom" secondItem="79O-FD-o10" secondAttribute="bottom" constant="9.5" id="elI-0a-cw4"/>
+                    <constraint firstAttribute="trailing" secondItem="79O-FD-o10" secondAttribute="trailing" constant="20" id="giB-on-sQX"/>
+                    <constraint firstItem="79O-FD-o10" firstAttribute="leading" secondItem="CL6-km-K5p" secondAttribute="leading" constant="369" id="p4R-IA-flP"/>
+                    <constraint firstItem="suO-K3-EdW" firstAttribute="leading" secondItem="CL6-km-K5p" secondAttribute="leading" constant="20" id="qvF-oJ-ei2"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="ingredientDetails" destination="79O-FD-o10" id="joO-5J-eDz"/>
+                <outlet property="ingredientName" destination="suO-K3-EdW" id="tzt-W1-BQ2"/>
+            </connections>
+            <point key="canvasLocation" x="214" y="-3"/>
+        </tableViewCell>
+    </objects>
+</document>
