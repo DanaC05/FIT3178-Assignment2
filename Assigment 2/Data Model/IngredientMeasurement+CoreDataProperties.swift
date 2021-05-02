@@ -2,7 +2,7 @@
 //  IngredientMeasurement+CoreDataProperties.swift
 //  Assigment 2
 //
-//  Created by Dana Casella on 28/4/21.
+//  Created by Dana Casella on 2/5/21.
 //
 //
 
@@ -16,8 +16,9 @@ extension IngredientMeasurement {
         return NSFetchRequest<IngredientMeasurement>(entityName: "IngredientMeasurement")
     }
 
-    @NSManaged public var quantity: String?
     @NSManaged public var name: String?
+    @NSManaged public var quantity: String?
+    @NSManaged public var meal: Meal?
 
 }
 

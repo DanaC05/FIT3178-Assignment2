@@ -8,7 +8,12 @@
 import UIKit
 
 class IngredientsTableViewController: UITableViewController {
-
+    @IBAction func ingredientDetails(_ sender: Any) {
+    }
+    
+    @IBOutlet weak var ingredientName: UILabel!
+    let CELL_INGREDIENT = "ingredientCell"
+    var ingredients: [Ingredient] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,23 +30,21 @@ class IngredientsTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return ingredients.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: CELL_INGREDIENT, for: indexPath)
+        
         // Configure the cell...
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.

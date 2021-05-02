@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20D91" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Ingredient" representedClassName="Ingredient" syncable="YES" codeGenerationType="class">
+    <entity name="Ingredient" representedClassName=".Ingredient" syncable="YES">
         <attribute name="ingredientDescription" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
-    <entity name="IngredientMeasurement" representedClassName="IngredientMeasurement" syncable="YES" codeGenerationType="class">
+    <entity name="IngredientMeasurement" representedClassName=".IngredientMeasurement" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="quantity" optional="YES" attributeType="String"/>
+        <relationship name="meal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Meal" inverseName="ingredients" inverseEntity="Meal"/>
     </entity>
-    <entity name="Meal" representedClassName="Meal" syncable="YES">
+    <entity name="Meal" representedClassName=".Meal" syncable="YES">
         <attribute name="cuisine" optional="YES" attributeType="String"/>
         <attribute name="instructions" optional="YES" attributeType="String"/>
         <attribute name="mealCategory" optional="YES" attributeType="String"/>
         <attribute name="mealThumbnailLink" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IngredientMeasurement"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="IngredientMeasurement" inverseName="meal" inverseEntity="IngredientMeasurement"/>
+        <relationship name="library" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MealLibrary" inverseName="savedMeals" inverseEntity="MealLibrary"/>
+    </entity>
+    <entity name="MealLibrary" representedClassName=".MealLibrary" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="savedMeals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meal" inverseName="library" inverseEntity="Meal"/>
     </entity>
     <elements>
-        <element name="Meal" positionX="118.3125" positionY="-362.83203125" width="128" height="133"/>
         <element name="Ingredient" positionX="-56.86328125" positionY="-275.28125" width="128" height="59"/>
-        <element name="IngredientMeasurement" positionX="152.484375" positionY="-176.51171875" width="128" height="59"/>
+        <element name="IngredientMeasurement" positionX="152.484375" positionY="-176.51171875" width="128" height="88"/>
+        <element name="Meal" positionX="118.3125" positionY="-362.83203125" width="128" height="134"/>
+        <element name="MealLibrary" positionX="54" positionY="-234" width="128" height="59"/>
     </elements>
 </model>

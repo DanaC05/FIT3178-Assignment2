@@ -7,16 +7,21 @@
 
 import UIKit
 
-class MyMealsTableViewController: UITableViewController {
+class MyMealsTableViewController: UITableViewController, DatabaseListener {
     
     let SECTION_MEALS = 0
     let SECTION_COUNT = 1
     let CELL_MEAL = "mealCell"
     let CELL_COUNT = "mealCountCell"
     var savedMeals: [Meal] = []
+    var selectedMeal: Meal?
+    weak var databaseController: DatabaseProtocol?
     
     override func viewDidLoad() {
-        addDefaultMeals()
+        // get reference to database from app delegate
+        let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
+        databaseController = appDelegate?.databaseController
+        
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -26,8 +31,23 @@ class MyMealsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    func addDefaultMeals() -> Void {
-        savedMeals.append(Meal(name: "Breakfast Potatoes", instructions: "Before you do anything, freeze your bacon slices so when you're ready to prep, it'll be so much easier to chop! Wash the potatoes and cut into square pieces. To prevent any browning, place the already cut potatoes in a bowl filled with water. In the meantime, heat the olive oil in a large skillet over medium-high heat. Tilt the skillet so the oil spreads evenly. Once the oil is hot, drain the potatoes and add to the skillet. Season with  salt (to taste),  pepper (to taste , and  Old Bay Seasoning (to taste)  as needed. Cook for 10 minutes, stirring the potatoes often until brown. Chop up the bacon and add to the potatoes. The bacon will start to render and the fat will begin to further cook the potatoes. Toss it up a bit! Once the bacon is cooked, add the garlic  and toss. Season once more. Control heat as needed. Let the garlic cook until fragrant, about one minute and add fresh parsley (to taste). Just before serving, drizzle maple syrup  over the potatoes and toss. Let that cook another minute, giving the potatoes a chance to caramelize.", mealThumbnailLink: "https://d2wtgwi3o396m5.cloudfront.net/recipe/b2633ed8-3706-4c75-b321-c6702ff258a1.jpg"))
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        databaseController?.addListener(listener: self)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        databaseController?.removeListener(listener: self)
+    }
+    
+    func onLibraryChange(storedMeals: [Meal]) {
+        savedMeals = storedMeals
+        tableView.reloadData()
+    }
+    
+    func onIngredientChange(storedIngredients: [IngredientMeasurement]) {
+        // nothing needed as ingredients are not changed on this view
     }
     
     // MARK: - Table view data source
@@ -54,26 +74,13 @@ class MyMealsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == SECTION_MEALS {
-            let mealCell = tableView.dequeueReusableCell(withIdentifier: CELL_MEAL, for: indexPath) as! MealOverviewCell
-            
-            let customMealCell = mealCell.createCell()!
+            let mealCell = tableView.dequeueReusableCell(withIdentifier: CELL_MEAL, for: indexPath)
             let meal = savedMeals[indexPath.row]
+            
+            mealCell.textLabel?.text = meal.name
+            mealCell.detailTextLabel?.text = meal.instructions
 
-
-            customMealCell.mealName?.text = meal.name
-            customMealCell.mealInstructions?.text = meal.instructions
-            customMealCell.mealInstructions.textContainer.lineBreakMode = .byTruncatingTail
-
-           // get image data - below code from https://stackoverflow.com/questions/39813497/swift-3-display-image-from-url
-            let url = URL(string: meal.mealThumbnailLink ?? "")!
-            let mealImageData = try? Data(contentsOf: url)
-
-            // if image data found, load into image view
-            if mealImageData != nil {
-                customMealCell.mealThumbnail.image = UIImage(data: mealImageData!)
-            }
-
-            return customMealCell
+            return mealCell
         }
         
         // if count section set relevent data
@@ -102,16 +109,11 @@ class MyMealsTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete && indexPath.section == SECTION_MEALS {
-            tableView.performBatchUpdates({
-                // remove hero from current party
-                self.savedMeals.remove(at: indexPath.row)
-                
-                // delete row
-                self.tableView.deleteRows(at: [indexPath], with: .fade)
-                
-                // update sections
-                self.tableView.reloadSections([SECTION_COUNT], with: .automatic)
-            }, completion: nil)
+            // remove meal from library object
+            databaseController?.removeMealFromMealLibrary(meal: savedMeals[indexPath.row], mealLibrary: databaseController!.myMealLibrary)
+            
+            // delete meal from core data
+            databaseController?.deleteMeal(meal: savedMeals[indexPath.row])
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
@@ -119,7 +121,17 @@ class MyMealsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == SECTION_MEALS {
-            performSegue(withIdentifier: "createEditSegue", sender: self)
+            selectedMeal = savedMeals[indexPath.row]
+            performSegue(withIdentifier: "editMealSegue", sender: self)
+        }
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "editMealSegue" {
+            let destination = segue.destination as! CreateEditTableViewController
+            destination.meal = selectedMeal
+            destination.newMeal = false
         }
     }
     

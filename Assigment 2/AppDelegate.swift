@@ -6,14 +6,20 @@
 //
 
 import UIKit
+import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var databaseController: DatabaseProtocol?
+    var persistentContainer: NSPersistentContainer?
+    var childContext: NSManagedObjectContext?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        databaseController = CoreDataController()
+        persistentContainer = CoreDataController().persistentContainer
+        childContext = CoreDataController().childContext
         return true
     }
 
